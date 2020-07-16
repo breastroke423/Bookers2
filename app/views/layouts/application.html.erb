@@ -10,53 +10,58 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="notice"><%= alert %></p>
   <% if flash[:notice] %>
     <div class="flash">
       <%= flash[:notice] %>
     </div>
   <% end %>
 
-  <div id="slidemenu">
+  <div class="navbar navbar-inverse ">
   <ul>
     <% if user_signed_in? %>
-    <div class ="title Bookers">
-      <p>Bookers</p>
-    </div>
-      <li>
+    <div class ="container">
+      <p　class="nav navbar-nav navbar-left">Bookers</p>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="glyphicon glyphicon-home home">
         <%= link_to "Home", user_path(current_user) %>
       </li>
 
-      <li>
+      <li class="glyphicon glyphicon-user users">
         <%= link_to "Users", users_path %>
       </li>
 
-      <li>
+      <li class="glyphicon glyphicon-book books">
         <%= link_to "Books", books_path %>
       </li>
 
-      <li>
+      <li class="glyphicon glyphicon-log-out logout">
         <%= link_to "logout", destroy_user_session_path, method: :delete %>
       </li>
+    </ul>
+    </div>
     <% else %>
-      <li>
+        <div class ="container">
+    <ul class="nav navbar-nav navbar-right">
+
+      <li class="glyphicon glyphicon-home home">
         <%= link_to "Home", root_path %>
       </li>
 
-      <li>
+      <li class="glyphicon glyphicon-link about">
         <%= link_to "About", home_about_path %>
       </li>
 
-      <li>
+      <li class="glyphicon glyphicon-edit sign_up">
         <%= link_to "sign up", new_user_registration_path %>
       </li>
 
-      <li>
+      <li class="glyphicon glyphicon-log-in sign_in">
         <%= link_to "login", new_user_session_path %>
       </li>
+    </ul>
     <% end %>
   </ul>
+</div>
 </div>
   <div class="container">
     <div class="row">

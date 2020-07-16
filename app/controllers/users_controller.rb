@@ -17,9 +17,7 @@ class UsersController < ApplicationController
 	def edit
 		# @book = Book.find(params[:id])
 		@user = User.find(params[:id])
-		if @user == current_user
-
-		else
+		if @user != current_user
 			redirect_to user_path(current_user)
 		end
 	end
@@ -43,7 +41,7 @@ class UsersController < ApplicationController
 		params.require(:book).permit(:title, :body)
 	end
 	def user_params
-		params.require(:user).permit(:name, :introduction)
+		params.require(:user).permit(:name, :introduction, :profile_image )
 	end
 
 
